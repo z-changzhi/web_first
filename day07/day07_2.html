@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度轮播</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        width: 560px;
+        height: 310px;
+        margin: 100px auto;
+        border: 1px solid deepskyblue;
+        position: relative;
+    }
+
+    .box-img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden
+    }
+
+    .box-img img {
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-delay: 0s;
+        width: 100%;
+        height: 100%;
+        /*display: block;*/
+        display: none;
+    }
+
+
+
+    .box a {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        text-decoration: none;
+        position: absolute;
+        top: 50%;
+        /*border: 1px solid deepskyblue;*/
+        text-align: center;
+        margin-top: -25px;
+        border-radius: 50%;
+        font-size: 26px;
+        color: white;
+    }
+
+    .box a:hover {
+        background-color: white;
+        color: #ff5800;
+    }
+
+    .box a.left {
+        left: 10px;
+        /*border: 1px solid deepskyblue;*/
+    }
+
+    .box a.right {
+        right: 10px;
+        /*border: 1px solid deepskyblue;*/
+    }
+
+    .box ul {
+        width: 100px;
+        overflow: hidden;
+        position: absolute;
+        right: 10px;
+        bottom: 20px;
+        cursor: pointer;
+    }
+
+    .box ul li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #97999B;
+        /*display: inline-block;*/
+        float: left;
+        margin-right: 5px;
+    }
+    @-webkit-keyframes fadeIn {
+        0%{
+            opacity: 0;
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+</style>
+<script>
+    window.onload = function () {
+        // 轮播三大业务模块
+        // 获取img元素
+        var boxImg = document.getElementsByClassName('box-img')[0];
+
+        var oImg = boxImg.children;
+
+        var arrowR = document.getElementsByClassName('right')[0];
+        var arrowL = document.getElementsByClassName('left')[0];
+        // 获取小圆点
+        var box = document.getElementsByClassName('box')[0];
+        // var ul = box.lastElementChild;
+        var ul = box.getElementsByTagName('ul')[0];
+        var oLi = ul.children;
+
+        console.log(oImg);
+        console.log(oLi)
+        // 左箭头
+
+        // 右箭头 --- 点击事件
+        oImg[0].style.display = "block";
+
+        var num = 0;
+
+        arrowR.onclick = function () {
+            for (let i = 0; i < oImg.length; i++) {
+                oImg[i].style.display = "none";
+                oLi[i].style.background = "#97999B";
+            }
+            num = num == oImg.length - 1 ? 0 : num + 1;
+            oImg[num].style.display = "block";
+            oLi[num].style.background = "red";
+        }
+        arrowL.onclick = function () {
+            for (let i = 0; i < oImg.length; i++) {
+                oImg[i].style.display = "none";
+                oLi[i].style.background = "#97999B";
+            }
+            num = num == 0 ? oImg.length - 1 : num - 1;
+            oImg[num].style.display = "block";
+            oLi[num].style.background = "red";
+            // num--;
+        }
+
+        // 小圆点 -- 给每一个小圆点添加点击事件。
+        for (let i = 0; i < oLi.length; i++) {
+            // for循环的点击事件 和 里面的是没有关系的 页面一打开 循环就执行完毕了。
+            // 给每个人添加一个下标志
+            // oLi[i].index = i;// 我自定的属性，会在每一个li里面生成
+            oLi[i].onclick = function () {
+                for (let j = 0; j < oImg.length; j++) {
+                    oLi[j].style.background = "#97999B";
+                    oImg[j].style.display = "none";
+                }
+                // oImg[i].style.display = "block";
+                // oLi[this.index].style.background = "red";
+                // oImg[this.index].style.display = "block";
+                oLi[i].style.background = "red";
+                oImg[i].style.display = "block";
+            }
+        }
+        function move(){
+            for (let i = 0; i < oImg.length; i++) {
+                oImg[i].style.display = "none";
+                oLi[i].style.background = "#97999B";
+            }
+            num++;
+            if (num == oImg.length){
+                num = 0;
+            }
+            oImg[num].style.display = "block";
+            oLi[num].style.background = "red";
+        }
+        var timer = null;
+        box.onmousemove =function(){
+            clearInterval(timer)
+        }
+        box.onmouseout  = function(){
+            timer =  setInterval(move,2000);
+        }
+
+    }
+</script>
+<body>
+<div class="box">
+    <div class="box-img">
+        <img src="./images/1.jpg" alt="">
+        <img src="./images/2.jpg" alt="">
+        <img src="./images/3.jpg" alt="">
+        <img src="./images/4.jpg" alt="">
+        <img src="./images/5.jpg" alt="">
+    </div>
+    <a class="left" href="#">&vartriangleleft;</a>
+    <a class="right" href="#">&vartriangleright;</a>
+    <ul>
+        <li style="background-color: red"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
+
+<!--静态轮播-->
+<!--
+display
+
+opcaty:0/1
+
+z-index:0-5 层级
+
+2. 动态轮播
+  无缝滚动
+-->

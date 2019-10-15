@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多组件 私有化</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li {
+        width: 200px;
+        height: 40px;
+        background-color: red;
+        margin-top: 50px;
+    }
+    ol li {
+        width: 200px;
+        height: 40px;
+        background-color: red;
+        margin-top:50px;
+        opacity:0.3;
+    }
+</style>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<ol>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+<script>
+    var ul = document.getElementsByTagName('ul')[0];
+    var ol = document.getElementsByTagName('ol')[0];
+    var aLi = ul.children;
+    var aOl = ol.children;
+    console.log(aLi);
+    for (let i = 0; i < aLi.length; i++) {
+        aLi[i].timer = null;//定时器私有化
+        aLi[i].onmouseover = function () {
+            startMove(this, 400)
+        }
+        aLi[i].onmouseout = function () {
+            startMove(this, 200)
+        }
+    }
+    for (let i = 0; i < aOl.length; i++) {
+        aOl[i].timer = null;//定时器私有化
+        aOl[i].alpha = 30;
+        aOl[i].onmouseover = function () {
+            startMove_1(this, 100)
+        }
+        aOl[i].onmouseout = function () {
+            startMove_1(this, 30)
+        }
+    }
+    // 封装函数
+    // var timer = null;
+
+    function startMove(obj, iTarget) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var speed = 0;
+            // var speed = (target - obj.offsetWidth)/20
+            // 匀速变化
+            // if (obj.offsetWidth < iTarget) {
+            //     speed = 10;
+            // } else {
+            //     speed = -10;
+            // }
+            speed += (iTarget - obj.offsetWidth)/20;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            if (obj.offsetWidth == iTarget) {
+                clearInterval(obj.timer);
+            } else {
+                obj.style.width = obj.offsetWidth + speed + "px";
+            }
+        }, 30);
+    }
+
+    function startMove_1(obj, iTarget) {
+        clearInterval(obj.timer);
+
+        obj.timer = setInterval(function(){
+
+            let speed;
+            // if (obj.alpha>iTarget){
+            //     speed=-10;
+            // }else {
+            //     speed=10;
+            // }
+            speed = (iTarget - obj.alpha)/10;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            // console.log("alpha="+obj.alpha+"speed"+speed)
+            if (obj.alpha == iTarget){
+                clearInterval(obj.timer);
+            }else{
+                obj.alpha+=speed;
+                obj.style.opacity = obj.alpha/100;
+                obj.style.filter = "alpha(opacity="+obj.alpha+")";
+            }
+        },30)
+    }
+    // 封装
+    // var timer = null;
+    function startMove(obj,iTarget){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var objStyle = parseInt(getStyle(obj,'width'));
+            var speed = (iTarget - objStyle)/10;
+            speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+            if (objStyle == iTarget){
+                clearInterval(obj,timer);
+            }else{
+                obj.style.width = objStyle+speed+'px';
+            }
+        },30);
+    }
+    // 兼容IE获取元素样式的封装方法
+    function getStyle(obj,attr){
+        if(obj.currentStyle){ // IE浏览器
+            return obj.currentStyle[attr];
+        }else{
+            return getComputedStyle(obj,false)[attr];
+        }
+    }
+</script>
+</body>
+</html>

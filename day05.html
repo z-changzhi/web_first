@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>前进</button>
+<button>后退</button>
+<button>go</button>
+</body>
+<a href="temp.html">aaaa</a>
+<script>
+    // setTimeout(function(){
+    //     window.close();
+    // },2000)
+    // window.open();
+    window.resizeTo("400px", "600px");
+    document.bgColor = "#FF5600";
+    console.log(history.length)
+    // 创建一个元素
+    // document.URL = "";
+    var btn =document.getElementsByTagName("button");
+    // document.createElement();
+    btn[0].onclick = function () {
+        history.forward();
+    }
+    btn[1].onclick = function () {
+        history.back();
+    }
+    btn[2].onclick = function () {
+        history.go(1)
+    }
+    console.log(location.hash);
+    console.log(location.host);
+</script>
+</html>

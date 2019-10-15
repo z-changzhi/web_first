@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        width: 350px;
+        height: 350px;
+        /*text-align: center;*/
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        /*border: 1px solid #666666;*/
+        position: relative;
+    }
+
+    .box {
+        width: 350px;
+        height: 350px;
+        position: relative;
+        /*border: 1px solid #ff5800;*/
+        overflow: hidden;
+
+        position: relative;
+
+        margin: auto;
+        z-index: 0;
+    }
+
+    .box img.block {
+        width: 350px;
+        height: 350px;
+        /*防止图片在div中出现底部3像素空白间隙 （或者是使用浮动）*/
+        display: block;
+        z-index: 0;
+    }
+
+    .box img.none {
+        width: 350px;
+        height: 350px;
+        /*防止图片在div中出现底部3像素空白间隙 （或者是使用浮动）*/
+        display: none;
+        z-index: 0;
+    }
+
+    .box ul {
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+        z-index: 100;
+    }
+
+    .box ul li {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #666666;
+        float: left;
+        margin: 3px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .right {
+        font-size: 25px;
+        width: 50px;
+        height: 50px;
+        border: 1px #97999B solid;
+        border-radius: 50%;
+        z-index: 100;
+        position: absolute;
+        cursor: pointer;
+        top: calc(50% - (25px));
+        right: 0px;
+
+        color: #97999B;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .left {
+        font-size: 25px;
+        width: 50px;
+        height: 50px;
+        border: 1px #97999B solid;
+        border-radius: 50%;
+        z-index: 100;
+        position: absolute;
+        left: 0px;
+        top: calc(50% - (25px));
+        cursor: pointer;
+
+        color: #97999B;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .left:hover {
+        background: #ff5800;
+        color: white;
+    }
+
+    .right:hover {
+        background: #ff5800;
+        color: white;
+    }
+</style>
+<script>
+    $(function () {
+        var $ul = "<ul></ul>";
+        var $li = "";
+        var num = $('.box img').length
+        var imgNum = 0;
+
+        $('.box').append($ul)
+        for (var i = 0; i < num; i++) {
+            $li += "<li data-id='" + (i + 1) + "'>" + (i + 1) + "</li>";
+        }
+        $('.box ul').append($li);
+        $('.box li').eq(0).css({"background-color": "red"}).siblings().css({"background-color": ""});
+        //
+        $('.box').find('li').mouseenter(function () {
+            $(this).css({"background-color": "red"}).siblings().css({"background-color": ""});
+            console.log($('.box img').eq($(this).index()));
+            $('.box img').eq(reEq($(this))).css({"display": "block"}).siblings("img").css({"display": "none"});
+        })
+        // set imgNum
+        var reEq = function (that) {
+            imgNum = that.index()
+            // console.log(that.index());
+            return that.index();
+        }
+        var click_left = function () {
+            // get imgNum
+            // console.log(imgNum);
+            imgNum = imgNum == 0 ? num - 1 : (imgNum - 1);
+            $('.box ul li').eq(imgNum).css({"background-color": "red"}).siblings().css({"background-color": ""});
+            $('.box img').eq(imgNum).css({"display": "block"}).siblings("img").css({"display": "none"});
+
+        }
+        var click_right = function () {
+            // get imgNum
+            // console.log(imgNum);
+            imgNum = imgNum == (num - 1) ? 0 : (imgNum + 1);
+            $('.box ul li').eq(imgNum).css({"background-color": "red"}).siblings().css({"background-color": ""});
+            $('.box img').eq(imgNum).css({"display": "block"}).siblings("img").css({"display": "none"});
+
+        }
+        $(".left").click(click_left);
+        $(".right").click(click_right);
+        // 移动
+        var move = function () {
+
+            imgNum = imgNum == (num - 1) ? 0 : (imgNum + 1);
+            $('.box ul li').eq(imgNum).css({"background-color": "red"}).siblings().css({"background-color": ""});
+            $('.box img').eq(imgNum).css({"display": "block"}).siblings("img").css({"display": "none"});
+        }
+
+        var timer = null;
+        timer = setInterval(move, 2000);
+        $('.container').hover(function () {
+
+
+            clearInterval(timer);
+        }, function () {
+            timer = setInterval(move, 2000);
+            // clearInterval(timer);
+        })
+    })
+</script>
+<body>
+<div class="container">
+    <div class="box">
+        <img class="block" src="./images/big1.jpg" alt="">
+        <img class="block" src="./images/big2.jpg" alt="">
+        <img class="block" src="./images/big3.jpg" alt="">
+    </div>
+    <div class="right">&xrArr;</div>
+    <div class="left">&xlArr;</div>
+</div>
+
+</body>
+</html>

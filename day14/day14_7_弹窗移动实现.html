@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .content > img {
+        position: relative;
+        width: 100%;
+        /*height: 100%;*/
+        top: 40px;
+
+    }
+
+    .nav {
+        position: absolute;
+        margin: 20px 10px;
+        right: 10px;
+    }
+
+    .nav-list {
+        color: black;
+        text-align: right;
+        margin-right: 18px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .nav-item {
+        color: black;
+        text-align: right;
+        margin-right: 18px;
+        font-size: 13px;
+    }
+
+    .mark {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        /*top: cale(50%);*/
+        /*left: cale(50%);*/
+        left: 0px;
+        top: 0px;
+        /*
+        * vw/vh 百分比 em rem
+        * 代表了我们屏幕的百分率
+        * 1.vw/vh 是屏幕的百分比
+        */
+    }
+
+    .login {
+        width: 391px;
+        height: 357px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .login img {
+        pointer-events: none;
+    }
+
+    .login span {
+        font-size: 30px;
+        text-align: center;
+        line-height: 46px;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        cursor: pointer;
+        top: -4px;
+        right: 2px;
+        /*margin: 10px 10px 10px 10px;*/
+        /*border: 1px solid #ff5800;*/
+        transition: all 1.2s;
+
+    }
+
+    .login span:hover {
+        transform: rotate(180deg);
+    }
+</style>
+<script>
+    $(function () {
+        $('.nav-item').eq(0).click(function () {
+            $('.mark').show();
+        })
+        $('.login span').click(function () {
+            $('.mark').hide();
+        })
+        // 弹窗移动时间
+        // 1. 弹窗追加事件 mousedown()\mouseup()\mousemove()
+        // 2. 获取mousedown() 事件中、要获取鼠标的位置，也要获取弹窗的left和top值
+        // 3. 在mouseup事件中，关闭移动效果
+        // 4. mousemove() 中，要判断鼠标的拖拽移动
+        var $chaX = null;
+        var $chaY = null;
+        $('.login').mousedown(function (e) {
+            $('.login').mousemove(function (e) {
+                var $x = e.clientX - ($(this).width() / 2);
+                var $y = e.clientY - ($(this).height() / 2);
+                $(this).css({left: $x + 'px', top: $y + 'px',margin:0});
+            })
+            $('.login').mouseup(function (e) {
+                $(this).unbind('mousemove')
+            })
+        })
+
+        // 方法1
+       /* $('.login').mousedown(function (e) {
+            var $this_x = parseInt($(this).css('margin-left'));
+            var $this_y = parseInt($(this).css('margin-top'));
+            var $client_x = e.clientX;
+            var $client_y = e.clientY;
+            $('.login').mousemove(function (e) {
+                // console.log( e.clientX - $client_x);
+                // console.log( e.clientY - $client_y);
+                console.log($this_x)
+                console.log($this_y)
+                var $x = e.clientX - $client_x + $this_x;
+                var $y = e.clientY - $client_y + $this_y;
+                $(this).css({marginLeft: $x + 'px', marginTop: $y + 'px'});
+            })
+            $('.login').mouseup(function (e) {
+                $(this).unbind('mousemove')
+            })
+        })*/
+        // $('.login img').mousedown(function(){
+        //
+        //     return false;
+        // })
+    })
+</script>
+<body>
+<div class="container">
+    <div class="nav">
+        <a href="###" class="nav-list">新闻</a>
+        <a href="###" class="nav-list">hao123</a>
+        <a href="###" class="nav-list">地图</a>
+        <a href="###" class="nav-list">视频</a>
+        <a href="###" class="nav-list">贴吧</a>
+        <a href="###" class="nav-list">学术</a>
+        <a href="###" class="nav-item">登录</a>
+        <a href="###" class="nav-item">设置</a>
+        <button class="more">更多产品</button>
+    </div>
+    <div class="content">
+        <img src="./images1/bg.png" alt="">
+        <div class="mark">
+            <div class="login">
+                <img src="./images1/login.png" alt="">
+                <span>×</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

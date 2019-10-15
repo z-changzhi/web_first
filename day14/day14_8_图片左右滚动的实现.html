@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        width: 1050px;
+        height: 350px;
+        /*margin: 0;*/
+        margin: 50px auto;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ff5800;
+    }
+
+    .box {
+        width: 3850px;
+        position: absolute;
+        /*left: -350px;*/
+    }
+
+    .box img {
+        width: 350px;
+        height: 350px;
+        float: left;
+        display: inline-block;
+    }
+
+    .left, .right {
+        width: 40px;
+        height: 350px;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        line-height: 350px;
+        font-size: 30px;
+        position: absolute;
+        cursor: pointer;
+        z-index: 99;
+        /*pointer-events: none;*/
+    }
+
+    .left {
+        top: 0;
+        left: 0;
+    }
+
+    .right {
+        top: 0;
+        right: 0;
+    }
+</style>
+<script>
+    $(function () {
+        // 把第一张图片复制到最后一张图片的后面
+        // var $firstImg = $('.box img').eq(0).clone();
+        // var $lastImg = $('.box img').eq($('.bog img').length - 2).clone()
+        var $imgWidth = $('.box img').eq(0).width();
+        var $num = 0;
+        $('.right').click(function () {
+            if ($num == 4) {
+                $('.box').css("left", 0 + "px")
+                $num = 0;
+            }
+            $num++;
+            $('.box').animate({left: -$num * $imgWidth + "px"})
+        })
+        $('.left').click(function () {
+            if ($num == 0) {
+                $num = 4;
+                $('.box').css("left", -$num * $imgWidth - $imgWidth + "px")
+            }
+            $num--;
+            $('.box').animate({left: -$num * $imgWidth + "px"})
+
+        })
+        //
+        $('document')
+    })
+
+</script>
+<body>
+<!--
+1. 图片左右滚动，徐左右点击事件，如click()
+2. 初始化一个变量为0，每次点击++或者--
+3. 移动的父容器的left，距离是每一张图片的宽度
+4. 如果需无限循环，
+-->
+<div class="container">
+
+    <div class="left">&lt;</div>
+    <div class="box">
+        <img src="./images/big1.jpg" alt="">
+        <img src="./images/big2.jpg" alt="">
+        <img src="./images/big3.jpg" alt="">
+        <img src="./images/big4.png" alt="">
+        <img src="./images/big1.jpg" alt="">
+        <img src="./images/big2.jpg" alt="">
+        <img src="./images/big3.jpg" alt="">
+        <img src="./images/big4.png" alt="">
+    </div>
+
+    <div class="right">&gt;</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+
+</style>
+<script>
+    $(function () {
+        $('.box').css({
+            width: "200px",
+            height: '200px',
+            backgroundColor: 'red'
+        }).animate({width: '1000px'}, 2000, function () {
+            alert('zidingyidonghuawancheng');
+        })
+    })
+</script>
+<body>
+<div class="box"></div>
+</body>
+</html>

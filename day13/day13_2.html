@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<script>
+    $(function () {
+
+    $("#btn").bind('click',fn1).bind('click',fn2).bind('click',fn3)
+
+    function fn1(){
+        $('#test').append("<h2>我是绑定函数click1</h2>")
+    }
+    function fn2(){
+        $('#test').append("<h2>我是绑定函数click2</h2>")
+    }
+    function fn3(){
+        $('#test').append("<h2>我是绑定函数click3</h2>")
+    }
+
+    $("#btn1").click(function(){
+        // 解除事件二
+        $('#btn').unbind('click',fn2);
+    })})
+</script>
+<body>
+<button id="btn">dianji</button>
+<button id="btn1">解除</button><div id="test"></div>
+
+</body>
+</html>

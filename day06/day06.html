@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <h1>获取鼠标事件</h1>
+    <p>1</p>
+    <p>1</p>
+</div>
+<div class="red">
+
+</div>
+<!--<div><p></p></div>-->
+<!--鼠标在浏览器窗口移动，又是愮对鼠标在浏览器的位置进行定位，一浏览器空白部分左上角为坐标原点，横线为x轴，纵向为y轴。-->
+<script>
+    window.onload = function () {
+
+        var box = document.getElementsByClassName('box')[0];
+        var box_red = document.getElementsByClassName('red')[0];
+        document.onmousemove = function () {
+            var e = window.event || event;
+            // style.color = "yellow";
+            // console.log(e);
+            // box_red.offsetLeft=(e.clientX-box.offsetLeft);
+            // box_red.offsetTop=(e.clientY-box.offsetTop);
+            var y = e.clientY - (box_red.offsetHeight / 2);
+            var x = e.clientX - (box_red.offsetWidth / 2);
+            box_red.style.top = y + "px";
+            box_red.style.left = x + "px";
+            // console.log("鼠标的x轴位置:" + (e.clientX-box.offsetLeft));
+            // console.log("鼠标的y轴位置:" + (e.clientY-box.offsetTop));
+            // console.log(box_red.offsetLeft);
+            // console.log(box_red.offsetTop);
+            // p1.innerHTML("鼠标的x轴位置:" + e.clientX-box.offsetLeft + "鼠标的y轴位置:" + e.clientY-box.offsetTop)
+        }
+        // box.onmouseout = function () {
+        //     // var box_red = document.getElementsByClassName('red')[0];
+        //     box_red.style.display = "none"
+        //
+        //     // var box_red = document.getElementsByClassName('red')[0];
+        //
+        // }
+        // box.onmouseover = function () {
+        //     var box_red = document.getElementsByClassName('red')[0];
+        //     box_red.style.display = "block"
+        // }
+    }
+
+    /*// var box_red = document.getElementsByClassName('red')[0];
+    var h1 = document.getElementsByTagName('h1')[0];
+    var p1 = document.getElementsByTagName('p')[0];
+    var p2 = document.getElementsByTagName('p')[1];
+    h1.onclick = function () {
+        this.style.color = 'pink';
+    }
+    h1.ondblclick = function () {
+        this.style.color = 'green';
+    }
+    box.onclick = function (e) {
+        // var e = window.event || event;
+        // this.style.color = "yellow";
+        // console.log(e);
+        // console.log("鼠标的x轴位置:" + (e.clientX-box.offsetLeft));
+        // console.log("鼠标的y轴位置:" + (e.clientY-box.offsetTop));
+        // console.log(box.offsetLeft);
+        // console.log(box.offsetTop);
+        // p1.innerHTML("鼠标的x轴位置:" + e.clientX-box.offsetLeft + "鼠标的y轴位置:" + e.clientY-box.offsetTop)
+    }
+
+    box.onmousemove = function (e) {
+        var box_red = document.getElementsByClassName('red')[0];
+        var e = window.event || event;
+        this.style.color = "yellow";
+        console.log(e);
+        // box_red.offsetLeft=(e.clientX-box.offsetLeft);
+        // box_red.offsetTop=(e.clientY-box.offsetTop);
+        box_red.style.top = (e.clientY + 10) + "px";
+        box_red.style.left = (e.clientX + 10) + "px";
+        // console.log("鼠标的x轴位置:" + (e.clientX-box.offsetLeft));
+        // console.log("鼠标的y轴位置:" + (e.clientY-box.offsetTop));
+        // console.log(box_red.offsetLeft);
+        // console.log(box_red.offsetTop);
+        // p1.innerHTML("鼠标的x轴位置:" + e.clientX-box.offsetLeft + "鼠标的y轴位置:" + e.clientY-box.offsetTop)
+    }*/
+
+</script>
+<style>
+    .box {
+        width: 600px;
+        height: 500px;
+        border: 2px #000 solid;
+        text-align: center;
+        position: relative;
+        left: 100px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .red {
+        position: absolute;
+        background-color: rgba(100, 100, 0, 0.3);
+        height: 100px;
+        width: 100px;
+        top: 0;
+        left: 0;
+    }
+</style>
+</body>
+</html>

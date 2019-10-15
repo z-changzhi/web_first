@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<style>
+    /*    方法一 把车开 webkit-ground-clip:text 背景裁切
+        只能在 Chrome 和 firefox 中实现
+
+    */
+    .bg1{
+        width: 1000px;
+        height: 500px;
+        margin: 40px auto;
+
+        background: url(./images/img-1.jpg);
+        background-size: cover;
+        font-size: 180px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 500px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent ;
+        /*opacity: 0.5;*/
+    }
+/*    方法二*/
+    .bg2{
+        width: 1000px;
+        height: 500px;
+        margin: 40px auto;
+        position: relative;
+        font-size: 180px;
+        font-weight: bold;
+    }
+    .bg2-img{
+        background: url(./images/img-1.jpg);
+        background-size: cover;
+        position: absolute;
+    }
+    .bg2-text{
+        font-size: 180px;
+
+    }
+</style>
+<body>
+<!--第一种方式，我们就用今天学的知识点，背景裁切图片-->
+<div class="bg1">
+    LOWCODE
+</div>
+<div class="bg2">
+    
+    LOWCODE
+</div>
+</body>
+</html>

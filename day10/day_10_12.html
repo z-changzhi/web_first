@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    p:nth-child(1) {
+        width: 600px;
+        height: 20px;
+        border: 1px solid red;
+        overflow: hidden;
+        text-overflow: clip;
+        white-space: nowrap;
+        /**
+         * 文本省略三要素
+         * 元素本身要固定宽度，一处隐藏
+         * 超出文本内容裁剪
+         * 强制文本内容不换行
+        */
+        /*text-overflow: ellipsis;*/
+    }
+</style>
+<body>
+<p>快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间看风景阿里快递费就爱上了房间</p>
+<p>快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间快递费就爱上了房间看风景阿里快递费就爱上了房间</p>
+</body>
+</html>

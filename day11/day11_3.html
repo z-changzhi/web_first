@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        #div1 {
+                position: absolute;
+                width: 1000px;
+                height: 1000px;
+                background: #000;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 1px 2px 3px #aaa;
+                -webkit-animation:rotate 2s linear infinite;
+        }
+        #div1:after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            float: left;
+            height: 1000px;
+            background: #fff;
+        }
+        #div2 {
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 200px solid #000;
+            border-radius: 50%;
+            left: 250px;
+
+            z-index: 1001;
+
+        }
+        #div2:after {
+            content: '';
+            position: absolute;
+            left: -200px;
+            width: 100px;
+            height: 100px;
+            background: #000;
+            border: 200px solid #fff;
+            border-radius: 50%;
+            left: -200px;
+            top: 300px;
+            z-index: 1001;
+        }
+        @keyframes rotate {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+
+</body>
+</html>

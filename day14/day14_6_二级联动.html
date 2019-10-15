@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<script>
+    $(function () {
+        // var $val = $().value;
+        // console.log($("[name='city']").value);
+
+        // $('select')、
+        $("[name='city']").change(function () {
+
+            // var $val =  $("[name='city']").value;
+            var $val = $(this).val();
+            console.log($val);
+            var $ob = $("[name='area']");
+            switch ($val) {
+                case "1":
+                    $ob.empty();
+                    $ob.append(" <option value='1'>南昌</option>\n" +
+                        "    <option value='2'>九江</option>\n" +
+                        "    <option value='3'>赣州</option>")
+                    break;
+                case "2":
+                    $ob.empty();
+                    $ob.append(" <option value='1'>合肥</option>\n" +
+                        "    <option value='2'>马鞍山</option>\n" +
+                        "    <option value='3'>宿州</option>")
+                    break;
+                case "3":
+                    $ob.empty();
+                    $ob.append(" <option value='1'>杭州</option>\n" +
+                        "    <option value='2'>台州</option>\n" +
+                        "    <option value='3'>宁波</option>")
+                    break;
+            }
+        })
+    })
+</script>
+<body>
+<select name="city">
+    <option value="1">江西</option>
+    <option value="2">安徽</option>
+    <option value="3">浙江</option>
+</select>
+<select name="area">
+    <option value='1'>南昌</option>
+    <option value='2'>九江</option>
+    <option value='3'>赣州</option>
+</select>
+</body>
+</html>

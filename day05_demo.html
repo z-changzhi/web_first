@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    window.onscroll = function(){
+        var box = document.getElementById('box');
+        var scrollTop = document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop
+        // console.log(scrollTop);
+        var aTop = document.getElementsByTagName('a');
+
+        var left = box.offsetLeft;
+        var step = 10;
+        var timer = setInterval(function(){
+            if(left<=400){
+                // console.log("-----++"+left);
+                left += step;
+                box.style.left = left+"px";
+            } else{
+                clearInterval(timer);
+            }
+        },10)
+        // var retimer = setInterval(function(){
+        //     if(left>-100){
+        //         // console.log("-----++"+left);
+        //         left -= step;
+        //         box.style.left = left+"px";
+        //     } else{
+        //         clearInterval(retimer);
+        //     }
+        // },30)
+        console.log(scrollTop)
+        if (scrollTop>=400){
+            // timer;
+        }else{
+        }
+    }
+</script>
+</body>
+<style>
+    body{
+        height: 1920px;
+    }
+    #box{
+        height: 100px;
+        width: 100px;
+        background-color: #ff5800;
+        position: absolute;
+        left: -100px;
+        top: 800px;
+        bottom: 0px;
+        right: 0px;
+    }
+</style>
+</html>

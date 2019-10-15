@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .box {
+        position: absolute;;
+        width: 200px;
+        height: 600px;
+        background-color: #ff0000;
+        left: -200px;
+        top: 200px;
+    }
+
+    .box span {
+        width: 20px;
+        height: 50px;
+        background-color: #20B2aa;
+        position: absolute;
+        left: 200px;
+        top: 75px;
+        cursor: pointer;
+        color: #fff;
+    }
+</style>
+<body>
+<div class="box">
+    <span>分享</span>
+
+</div>
+<script>
+    var box = document.getElementsByClassName('box')[0];
+    console.log(box.offsetLeft);
+
+    box.onmouseover = function () {
+        startMove(0)
+    }
+
+    box.onmouseout = function () {
+        startMove(-200)
+    }
+    var temp =null;
+    function startMove(target) {
+        clearInterval(temp)
+        temp = setInterval(function () {
+            var speed = target == -200 ? -5 : 5;
+            if (box.offsetLeft == target) {
+                clearInterval(temp)
+            } else {
+                box.style.left = box.offsetLeft + speed + "px";
+            }
+        }, 10)
+    }
+
+</script>
+</body>
+</html>

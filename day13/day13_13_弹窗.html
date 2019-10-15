@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        /*width: 100%;*/
+        /*height: 100%;*/
+        overflow-x: hidden;
+        /*position: relative;*/
+    }
+
+    .mark {
+        width: 46px;
+        height: 277px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        border: 1px solid red;
+    }
+
+    .ad {
+        width: 221px;
+        height: 407px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        display: none;
+    }
+</style>
+<script>
+    $(function () {
+        // xiangxia
+        $('.mark').click(function () {
+            $(this).hide(600, function () {
+                $('.ad').slideDown(111);
+            });
+
+        })
+        $('.ad').click(function () {
+            $(this).slideUp(1000, function () {
+                $('.mark').show();
+            });
+
+
+        })
+    })
+</script>
+<body>
+<div class="container">
+    <div class="mark">
+        <img src="./images/ad-start.png" alt="">
+    </div>
+    <div class="ad">
+        <img src="./images/ad.png" alt="">
+    </div>
+</div>
+</body>
+</html>

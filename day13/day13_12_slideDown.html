@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        list-style: none;
+
+    }
+    ul{
+        /*height: 50px;*/
+        /*overflow: hidden;*/
+    }
+    li{
+        height: 40px;
+        margin-bottom: 10px;
+
+    }
+    li:nth-child(2n-1){
+        background-color: #ff5800;
+    }
+    li:nth-child(2n){
+        background-color: #5800ff;
+    }
+    .box{
+        width: 300px;
+        height: 200px;
+        background-color: #1A355E;
+        display: none;
+    }
+
+</style>
+<script>
+    $(function(){
+        // xiangxia
+        $('button').eq(0).click(function(){
+            $('ul').slideDown(111);
+            // $('.box').fadeIn(2000);
+            // $('.box').fadeIn(2000,function(){
+            //     alert("jhhh");
+            // })
+        })
+        // xiangshang
+        $('button').eq(1).click(function(){
+            $('ul').slideUp(111);
+            // $('.box').fadeOut(2000);
+            // $('.box').fadeOut(2000,function(){
+            //     alert("jhhh");
+            // })
+        })
+        // qiehuan
+        // $('button').eq(2).click(function(){
+        //     $('.box').fadeToggle();
+        //     $('.box').fadeToggle(2000,0.3);
+        //     $('.box').fadeToggle(2000,0.3,function(){
+        //         alert("jhhh");
+        //     })
+        // })
+        // $('button').eq(3).click(function(){
+        //     $('.box').fadeTo();
+        //     $('.box').fadeTo(2000,0.3);
+        //     $('.box').fadeTo(2000,0.3,function(){
+        //         alert("jhhh");
+        //     })
+        // })
+    })
+    // danchu
+
+    // $(".box").fadeIn("slow");
+    // $(".div2").fadeIn("fast",function(){
+    //     alert("Animation Done.");
+    // });
+</script>
+<body>
+<button>向下</button>
+<button>向上</button>
+<button>向下/向上</button>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

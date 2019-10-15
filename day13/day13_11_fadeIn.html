@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    .box{
+        width: 300px;
+        height: 200px;
+        background-color: #1A355E;
+        display: none;
+    }
+</style>
+<script>
+    $(function(){
+        $('button').eq(0).click(function(){
+            $('.box').fadeIn();
+            $('.box').fadeIn(2000);
+            $('.box').fadeIn(2000,function(){
+                alert("jhhh");
+            })
+        })
+        $('button').eq(1).click(function(){
+            $('.box').fadeOut();
+            $('.box').fadeOut(2000);
+            $('.box').fadeOut(2000,function(){
+                alert("jhhh");
+            })
+        })
+        $('button').eq(2).click(function(){
+            $('.box').fadeToggle();
+            $('.box').fadeToggle(2000,0.3);
+            $('.box').fadeToggle(2000,0.3,function(){
+                alert("jhhh");
+            })
+        })
+        $('button').eq(3).click(function(){
+            $('.box').fadeTo();
+            $('.box').fadeTo(2000,0.3);
+            $('.box').fadeTo(2000,0.3,function(){
+                alert("jhhh");
+            })
+        })
+    })
+    // danchu
+
+    // $(".box").fadeIn("slow");
+    // $(".div2").fadeIn("fast",function(){
+    //     alert("Animation Done.");
+    // });
+</script>
+<body>
+<button>淡入</button>
+<button>淡出</button>
+<button>淡入/淡出</button>
+<button>淡出/淡入</button>
+<div class="box"></div>
+<div class="div2"></div>
+</body>
+</html>

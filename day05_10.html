@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除节点</title>
+</head>
+<body>
+<h1>删除节点</h1>
+<div class="box">
+    父节点
+    <p>求求你别杀那我</p>
+    <h4>我是h4臭弟弟</h4>
+</div>
+<script>
+    // 删除当前节点下指定的子节点，删除成功返回该删除的节点。否则返回null
+    // element.removeChild(Node);
+
+    var box = document.getElementsByClassName('box')[0];
+    var p = document.getElementsByTagName('p')[0];
+    // box.removeChild(p);
+    // 1. 获取当前元素的父节s点
+    // element.parentNode
+    p.parentNode.style.color = 'pink';
+    // 2. 获取当前元素所有的元素节点对象。只返回HTML节点
+    // element.children
+    console.log(box.children[0]);
+
+    // console.log(box.children[0].children[0].innerText);
+    // 2.1 获取当前元素 所有子元素节点，包括文本、html、属性节点（enter也会当作一个节点）
+    // console.log(element.childNodes)
+
+    // 2.3 获取当前元素第一个子节点对象
+    // element.firstChild
+
+    // 2.4 获取当前元素最后一个子节点对象
+    // element.last
+
+    // 3. 获取当前元素的同级元素
+    // 3.1 返回当前元素下一个同级元素
+    // element.nextElementSibling
+
+    window.onresize = function () {
+        // console.log(h4)
+        var h4 = document.getElementsByTagName('h4')[0];
+        var a = document.documentElement.clientWidth/50+"px";
+        console.log(a)
+        h4.style.fontSize = a;
+    }
+    // console.log(h4.previousElementSibling.innerHTML)
+
+    // 3.2 返回当前元素的上一个同级元素，若没有则返回null
+    // element.previousElementSibling
+
+    // 4. 获取当前元素的文本
+    // 4.1 element.innerText
+    console.log()
+    // 4.2 返回元素的所有文本，包括HTML标签
+    // element.innerHTML
+
+    // 5. 获取当前节点的节点类型。
+    // 返回节点的类型
+    // element.nodeType
+    // (1,2,3,8,9)
+    /**
+     * 1. 元素节点
+     * 2. 属性节点
+     * 3. 文本节点 *
+     * 8. 注释节点
+     * 9. 文档节点
+     */
+
+    // 6. 设置样式
+    // 设置元素的样式时使用 style
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .lei{
+        color:#ff5800;
+    }
+</style>
+<body>
+<h3>创建节点</h3>
+<script>
+    // 创建一个HTML标签
+    var h3 = document.createElement("h3");
+    // 创建文本节点
+    // document.createTextNode(string);
+    var txt = document.createTextNode("今天没有宵夜！");
+    // 创建一个属性节点
+    document.createAttribute("class")
+    // 向元素内部最后面添加一个节点
+    // element.appendChild(Node);
+    h3.appendChild(txt)
+    h3.className = "lei";
+    /**
+     * 创建了之后需要添加到body中不然不会在浏览器上显示。
+     * */
+    document.body.appendChild(h3);
+    // 向元素内部参照节点的前面插入新的结点
+    // element.insertBefore(newNode,oldNode);
+</script>
+</body>
+</html>

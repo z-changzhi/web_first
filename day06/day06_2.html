@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    h1{
+        text-align: center;
+    }
+    .box1{
+        width: 400px;
+        height: 400px;
+        border: 1px solid #58ff00;
+        margin:0 auto;
+        text-align: center;
+        line-height: 200px;
+    }
+    .box2{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ff5800;
+        margin:0 auto;
+        text-align: center;
+        line-height: 200px;
+    }
+    button{
+
+    }
+
+</style>
+<h1>事件冒泡与捕获</h1>
+<div class="box1">
+    <div class="box2">
+        我是父级元素
+        <button >
+            我是子元素
+        </button>
+    </div>
+</div>
+</body>
+<script>
+    var box1 = document.getElementsByClassName("box1")[0];
+    var box2 = document.getElementsByClassName("box2")[0];
+    var btn = document.getElementsByTagName("button")[0];
+    // 事件有三种
+    // html事件
+    // 结构不分离 this 指向不明确
+    function mao(){
+        alert(box1.innerText);
+    }
+    // DOM 0级事件
+    // 分离的
+    // box2.onclick = function(){
+    //     alert(this.innerText);
+    // }
+    // DOM 2级别事件
+    // 语法：addEventListener(事件名称，函数名称，Boolean)
+    btn.addEventListener("click",function () {
+        alert("我是DOM 2级别事件")
+    },false)
+    box2.addEventListener("click",function () {
+        alert("我是2 2级别事件")
+    },false)
+    box1.addEventListener("click",function () {
+        alert("我是1 2级别事件")
+    },false)
+    // 第三个参数如果是 false 就是冒泡 true 就是捕获
+    // DOM 事件流分为三个阶段 1. 事件捕获阶段，处于目标阶段，事件冒泡阶段
+</script>
+</html>

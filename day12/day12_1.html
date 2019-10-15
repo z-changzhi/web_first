@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<script>
+    $(function(){
+
+        $('h1').click(function(){
+            $(this).css("color","red");
+        })
+
+        // $('h4').dblclick(function () {
+        //     alert($(this).text(aaaaa));
+        // })
+
+        $('h4').mouseleave(function () {
+            alert($(this).text(22222));
+        })
+        $('h4').mouseout(function () {
+            alert($(this).text(55555))
+        })
+
+        $('h1').hover(function () {
+            $(this).css("color", "red");
+        }, function () {
+            $(this).css("color", "");
+        })
+        $("ul li").each(function (index, value) {
+            console.log(index)
+            console.log(value)
+            $(value).hover(function () {
+                $(this).css("background-color", "red");
+            }, function () {
+                $(this).css("background-color", "");
+            })
+        })
+    })
+</script>
+<body>
+<h1>danji</h1>
+<h4>shuangji</h4>
+<ul>
+    <li>鼠标事件-hover</li>
+    <li>鼠标事件-hover</li>
+    <li>鼠标事件-hover</li>
+    <li>鼠标事件-hover</li>
+    <li>鼠标事件-hover</li>
+    <li>鼠标事件-hover</li>
+</ul>
+</body>
+</html>

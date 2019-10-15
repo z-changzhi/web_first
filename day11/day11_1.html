@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .div1 {
+        width: 250px;
+        height: 250px;
+        margin: 50px auto;
+        border: 1px solid skyblue;
+        position: relative;
+        perspective: 250px;
+    }
+
+    .div2 {
+        padding: 50px;
+        position: absolute;
+        border: 1px solid black;
+        background-color: red;
+        transform: rotateX(30deg);
+        transition: all 2s;
+    }
+
+    .div3 {
+        padding: 40px;
+        position: absolute;
+        border: 1px solid black;
+        background-color: yellow;
+        transform-style: preserve-3d;
+        transform: rotateY(30deg);
+        transition: all 2s;
+    }
+
+    .div1:hover .div2 {
+        transform: rotateX(360deg)
+    }
+
+    .div1:hover .div3 {
+        transform: rotateX(360deg)
+    }
+
+</style>
+<body>
+<div class="div1">
+    <div class="div2">
+
+    </div>
+    <div class="div3">
+
+    </div>
+</div>
+</body>
+</html>

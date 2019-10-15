@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-color: bisque;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    .msg {
+        width: 800px;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    textarea {
+        width: 594px;
+        height: 40px;
+        resize: none;
+        float: left;
+        line-height: 40px;
+    }
+
+    button {
+        width: 100px;
+        height: 46px;
+        float: left;
+        /*background-color: #ff5800;*/
+    }
+
+    ul {
+        clear: both;
+        display: block;
+        width: 700px;
+        height: 40px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        color: gray;
+        margin: 20px 0px 20px 0px;
+    }
+
+    /*    li:before{
+        }*/
+</style>
+<body>
+<h1>留言板</h1>
+<div class="msg">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发送</button>
+</div>
+<ul>
+    <li>我是一楼占个沙发</li>
+    <li>一楼你个老秃驴</li>
+    <li>上面的我儿子</li>
+    <li>别说话闭嘴</li>
+</ul>
+</body>
+<script>
+    // 需求：开发一个留言板，请用js中的DOM操作
+    var button = document.getElementsByTagName("button")[0];
+    var textarea = document.getElementsByTagName("textarea")[0];
+    button.onclick = function () {
+        var ul_li = document.getElementsByTagName("ul")[0];
+
+        // 创建一个 HTML 元素
+        var li = document.createElement("li");
+
+        // 创建一个文本结点
+        var txt = document.createTextNode(textarea.value);
+
+        // 把文本标签写到 html元素当中
+        li.appendChild(txt);
+
+        // 把 html元素写到ul中
+        ul_li.appendChild(li);
+        textarea.value='';
+    }
+    /**
+     * 思路：
+     * 1. Html布局
+     * 2. css 样式
+     * 3. js  逻辑
+     * 4.1 点击事件
+     * 4.2 创建li标签
+     * 4.3 创建li标签里面的文本节点
+     * 4.4 把文本节点追加都里面
+     * 4.5 把li标签追加到ul里面
+     */
+</script>
+</html>

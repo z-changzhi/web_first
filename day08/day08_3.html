@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .box{
+        position: absolute;;
+        width: 200px;
+        height: 600px;
+        background-color: #ff0000;
+        left: -200px;
+        top: 200px;
+    }
+    .box span {
+        width: 20px;
+        height: 50px;
+        background-color: #20B2aa;
+        position: absolute;
+        left: 200px;
+        top: 75px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+</style>
+<div class="box"><span>分享</span>
+</div>
+<script>
+    var box = document.getElementsByClassName('box')[0];
+    box.onmouseover = function () {
+        startMove(0)
+    }
+
+    box.onmouseout = function () {
+        startMove(-200)
+    }
+
+    // 封装
+    // 缓动动画，A=A+(B-A)/10;
+    var timer = null;
+    function startMove(target){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            // var speed = target == 0 ? 5 : -5;
+            var speed = (target - box.offsetLeft)/20
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            console.log(speed);
+            if (box.offsetLeft == target) {
+                clearInterval(timer)
+            } else {
+                box.style.left = box.offsetLeft +speed + "px";
+            }
+
+        },30)
+    }
+</script>
+</body>
+</html>

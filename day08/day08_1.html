@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js透明度动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity: 0.3;
+            /*正常浏览器（非IE）*/
+            /*IE浏览器兼容写法
+            filter: alpha(opacity=30);
+            */
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+<script>
+    // 获取元素
+    var box = document.getElementsByClassName('box')[0];
+
+    // 移入移出事件，改变元素的透明度
+    box.onmouseover = function(){
+        startMove(100)
+    }
+
+    box.onmouseout = function(){
+        startMove(30)
+    }
+    var timer,alpha = 30;
+    function startMove(iTarget){
+        // alpha = box.style.opacity;
+        // console.log(alpha);
+        // 右浮动清除浮动， 定时器先关再开
+        clearInterval(timer);
+        timer = setInterval(function(){
+
+            let speed;
+            if (alpha>iTarget){
+                speed=-10;
+            }else {
+                speed=10;
+            }
+            console.log("alpha="+alpha+"speed"+speed)
+            if (alpha == iTarget){
+                clearInterval(timer);
+            }else{
+                alpha+=speed;
+                box.style.opacity = alpha/100;
+            }
+        },30)
+
+    }
+</script>
+</body>
+</html>

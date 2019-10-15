@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    div {
+        width: 250px;
+        height: 250px;
+        background-color: #ff5800;
+    }
+
+    .div1 {
+        display: none;
+    }
+</style>
+<script>
+    $(function () {
+        $('button').eq(0).click(function () {
+            // $('.div1').show();
+            // $('.div1').show(2000);
+            $('.div1').show(2000, function () {
+                // alert('niyeyezaici');
+                $(this).hide(2000);
+            });
+        })
+        $('button').eq(1).click(function () {
+            // $('.div2').hide();
+            $('.div2').hide(2000, function () {
+                // alert('niyeyezaici');
+                $(this).show(2000);
+            });
+
+        })
+        $('button').eq(2).click(function () {
+            $('.div3').toggle(10000)
+        })
+    })
+</script>
+<body>
+<button>xianshi</button>
+<button>yincang</button>
+<button>xianshi|yingcang</button>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>

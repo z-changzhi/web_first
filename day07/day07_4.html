@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .box {
+        margin: 100px auto;
+        width: 500px;
+        height: 272px;
+        border: 1px solid #1A355E;
+        position: relative;
+    }
+
+    .box-img {
+        width: 500px;
+        height: 272px;
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    .box-img img {
+        width: 500px;
+        height: 272px;
+        position: relative;
+        margin: 0px;
+        z-index: 0;
+        transition: all 1.2s;
+    }
+
+    .box a {
+        text-decoration: none;
+        width: 50px;
+        height: 50px;
+        border: #ff5800;
+        position: absolute;
+        top: 111px;
+        border: 1px #ff5800 solid;
+        display: inline-block;
+        line-height: 50px;
+        text-align: center;
+        font-size: 30px;
+        color: white;
+        z-index: 10;
+    }
+
+    .box a.left {
+        left: 10px;
+    }
+
+    .box a.right {
+        right: 10px;
+    }
+
+    .box a:hover {
+        background-color: #ff5800;
+    }
+
+</style>
+<script>
+    window.onload = function () {
+        var buttonL = document.getElementsByClassName('left')[0];
+        var buttonR = document.getElementsByClassName('right')[0];
+        var Img = document.getElementsByClassName('box-img')[0];
+        var oImg = Img.children;
+
+        var num = 0;
+        buttonL.onclick = function () {
+            for (let i = 0; i < oImg.length; i++) {
+                oImg[i].style.opacity = 0;
+                oImg[i].style.zIndex = 0;
+            }
+
+            if (num == oImg.length-1) {
+                num = 0;
+            } else {
+                num = num + 1;
+            }
+
+
+            oImg[num].style.zIndex = 10;
+            // oImg[num].style.opacity = 1;
+            console.log(oImg[num]);
+
+        }
+        buttonR.onclick = function () {
+            for (let i = 0; i < oImg.length; i++) {
+                oImg[i].style.opacity = 0;
+                oImg[i].style.zIndex = 0;
+            }
+            if (num == 0) {
+                num = oImg.length - 1;
+            } else {
+                num = num - 1;
+            }
+
+            // console.log(num);
+
+            oImg[num].style.zIndex = 10;
+            // oImg[num].style.opacity = 1;
+            console.log(oImg[num]);
+
+        }
+    }
+</script>
+<body>
+<div class="box">
+    <div class="box-img">
+        <img src="./images/1.jpg" alt="">
+        <img src="./images/2.jpg" alt="">
+        <img src="./images/3.jpg" alt="">
+        <img src="./images/4.jpg" alt="">
+        <img src="./images/5.jpg" alt="">
+    </div>
+    <a href="#" class="left"><</a>
+    <a href="#" class="right">></a>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
