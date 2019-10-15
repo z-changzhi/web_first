@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        width: 1400px;
+        height: 600px;
+        margin: 40px auto;
+    }
+    .box{
+        border: 1px solid #EEE;
+        box-sizing: border-box;
+    }
+    .box>img {
+        width: 448px;
+        display: block;
+    }
+    .left, .right {
+        position: relative;
+        float: left;
+        width: 450px;
+        height: 550px;
+    }
+
+
+
+    .bottom {
+        position: relative;
+        margin: 25px 0px 25px 0px;
+
+    }
+
+    .bottom ul {
+        width: 390px;
+        height: 58px;
+        margin: 0 auto;
+
+    }
+
+    .bottom ul li {
+        float: left;
+        border: 2px solid transparent;
+        margin: 0 10px;
+    }
+
+    .bottom ul li:hover {
+        border: 2px solid #E4393C;
+    }
+
+    .bottom ul li img {
+        width: 54px;
+        height: 54px;
+        display: block;
+    }
+
+    .spanL, .spanR {
+        display: block;
+        width: 30px;
+        position: absolute;
+        top: 0;
+        text-align: center;
+        line-height: 58px;
+        font-size: 40px;
+        cursor:pointer;
+        color: rgba(0,0,0,0.3);
+        font-weight: bold;
+        /*pointer-events: none;*/
+    }
+
+    .spanL {
+        left: 0px;
+    }
+
+    .spanR {
+        right: 0px;
+    }
+    .right{
+        overflow: hidden;
+    }
+    .right{
+        display: block;
+    }
+    .mark{
+        position: absolute;
+        width: 224px;
+        height: 279px;
+        background-color: rgba(205,205,0,0.4);
+    }
+</style>
+<script>
+
+
+
+
+
+
+
+
+    $(function () {
+        $('.mark').hide();
+        $('.right').hide();
+
+        // 1. 鼠标移动到小图片的时候上面的大图片发生变化。
+        $('.bottom ul li').mouseover(function(){
+            var $index = $(this).index()+1;
+            $('.box img').attr('src','./images/middle'+$index+'.jpg');
+        })
+        // 2. 实现移入到left的时候出现放大镜
+        $('.left').hover(function(){
+            $('.mark').show();
+            $('.right').show();
+
+        },function(){
+            $('.mark').hide();
+            $('.right').hide();
+
+        })
+    })
+
+</script>
+<body>
+<!--
+1. 图片左右滚动，徐左右点击事件，如click()
+2. 初始化一个变量为0，每次点击++或者--
+3. 移动的父容器的left，距离是每一张图片的宽度
+4. 如果需无限循环，
+-->
+<div class="container">
+    <div class="left">
+        <div class="box">
+            <img src="./images/middle1.jpg" alt="">
+        </div>
+        <div class="bottom">
+            <ul>
+                <li><img src="./images/small1.jpg" alt=""></li>
+                <li><img src="./images/small2.jpg" alt=""></li>
+                <li><img src="./images/small3.jpg" alt=""></li>
+                <li><img src="./images/small4.jpg" alt=""></li>
+                <li><img src="./images/small5.jpg" alt=""></li>
+            </ul>
+            <span class="spanL">&lt;</span>
+            <span class="spanR">&gt;</span>
+        </div>
+        <div class="mark"></div>
+    </div>
+    <div class="right">
+        <img src="./images/big1.jpg" alt="">
+    </div>
+</div>
+</body>
+</html>
