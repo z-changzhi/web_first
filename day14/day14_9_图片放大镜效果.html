@@ -17,14 +17,17 @@
         height: 600px;
         margin: 40px auto;
     }
-    .box{
+
+    .box {
         border: 1px solid #EEE;
         box-sizing: border-box;
     }
-    .box>img {
+
+    .box > img {
         width: 448px;
         display: block;
     }
+
     .left, .right {
         position: relative;
         float: left;
@@ -32,6 +35,15 @@
         height: 550px;
     }
 
+    .canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*border: 1px solid #ff5800;*/
+        width: 450px;
+        height: 450px;
+        z-index: 100;
+    }
 
 
     .bottom {
@@ -71,8 +83,8 @@
         text-align: center;
         line-height: 58px;
         font-size: 40px;
-        cursor:pointer;
-        color: rgba(0,0,0,0.3);
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.3);
         font-weight: bold;
         /*pointer-events: none;*/
     }
@@ -84,46 +96,68 @@
     .spanR {
         right: 0px;
     }
-    .right{
+
+    .right {
+
+        border: 1px solid #EEE;
         overflow: hidden;
     }
-    .right{
+
+    .right img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .right {
         display: block;
     }
-    .mark{
+
+    .mark {
         position: absolute;
+        top: 0;
+        left: 0;
         width: 224px;
-        height: 279px;
-        background-color: rgba(205,205,0,0.4);
+        height: 224px;
+        background-color: rgba(205, 205, 0, 0.4);
+        z-index: 10;
+        display: none;
     }
 </style>
 <script>
-
-
-
-
-
-
-
-
     $(function () {
-        $('.mark').hide();
-        $('.right').hide();
-
         // 1. 鼠标移动到小图片的时候上面的大图片发生变化。
-        $('.bottom ul li').mouseover(function(){
-            var $index = $(this).index()+1;
-            $('.box img').attr('src','./images/middle'+$index+'.jpg');
+        $('.bottom ul li').mouseover(function () {
+            var $index = $(this).index() + 1;
+            $('.box img').attr('src', './images/middle' + $index + '.jpg');
+            $('.right img').attr('src', './images/big' + $index + '.jpg');
         })
         // 2. 实现移入到left的时候出现放大镜
-        $('.left').hover(function(){
-            $('.mark').show();
-            $('.right').show();
+        $('.canvas').hover(function (e) {
+            $('.canvas').mousemove(function (e) {
+                $('.mark').show();
+                $('.right').show();
+                var $markL = e.offsetX - $('.mark').width() / 2;
+                var $markT = e.offsetY - $('.mark').height() / 2;
 
-        },function(){
+                if ($markL < 0) $markL = 0;
+                if ($markL > $('.mark').width()) $markL = $('.mark').width();
+                if ($markT > $('.mark').height()) $markT = $('.mark').height();
+                if ($markT < 0) $markT = 0;
+                // $markL = $markL < 0 ? 0 : $markL;
+                // $markL = $markL > $('.mark').width() ? $('.mark').width() : $markL;
+                // $markT = $markT > $('.mark').height() ? $('.mark').height() : $markT;
+                // $markT = $markT < 0 ? 0 : $markT;
+                $('.mark').css({left: $markL + 'px', top: $markT + 'px'})
+                console.log($markL)
+                $('.right img').css({
+                    left: -$markL * 1.7 + "px",
+                    top: -$markT * 1.45 + "px",
+                })
+            })
+        }, function () {
             $('.mark').hide();
             $('.right').hide();
-
         })
     })
 
@@ -151,6 +185,7 @@
             <span class="spanL">&lt;</span>
             <span class="spanR">&gt;</span>
         </div>
+        <canvas class="canvas"></canvas>
         <div class="mark"></div>
     </div>
     <div class="right">
