@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        // 1. 创建XHR   ---  有兼容 IE5.6
+        var xhr = new XMLHttpRequest();
+        // 2. 打开 xhr.open("打开的方式","地址","是否异步")
+        xhr.open("POST", 'text.txt', true);
+        // 3. 发送
+        // 3.1 发送数据，如果是改的，一般写null。如果是post,一般里面写需要发送的数据
+        // 请求头
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("a=1&b=10");
+        // 4. 检测
+        xhr.onload = function () {
+            //xhr.readyState == 4&&
+
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr);
+                console.log(xhr.responseText);
+                document.write(xhr.responseText);
+            } else {
+                console.log('请求失败')
+            }
+        }
+    }
+</script>
+<body>
+
+
+</body>
+
+</html>

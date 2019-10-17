@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<script>
+  $.ajax({
+      type:"get",
+      url:'text1.txt',
+      async:true,
+      data:"data",
+      dataType:"text",
+      success:function(res){
+          console.log(res);
+          document.write(res);
+      },
+      error:function(err){
+          console.log(err)
+      }
+  }).fail(function(err) {
+      console.log(err)
+  });
+</script>
+<body>
+
+
+</body>
+
+</html>

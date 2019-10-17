@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<script>
+    $.ajax({
+        type: "get",
+        url: 'cake.json',
+        async: true,
+        dataType: "json",
+        success: function (res) {
+            console.log();
+
+            setData(res.cake);
+            // document.write(res);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    }).fail(function (err) {
+        console.log(err)
+    });
+    var setData = function (data) {
+        data.map(function (e) {
+            console.log(e.title);
+            $('.box ul ').append("<li>"+"商品名称："+e.title+"+"商品描述："+e.desc+"商品价格："+e.price+"+"商品标签："+e.tae+"<img src=''  style='width:350px;height:350px'>"+"</li>");
+            console.log(e.src);
+            $('.box ul li img').attr("src",e.src+"");
+        })
+    }
+</script>
+<body>
+<div class="box">
+    <ul>
+    </ul>
+    <img src="./images/middle1.jpg" alt="">
+</div>
+</body>
+
+</html>

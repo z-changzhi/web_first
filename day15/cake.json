@@ -1,0 +1,32 @@
+{
+	"cake":[
+		{
+			"src":"./images/middle1.jpg",
+			"title":"米道",
+			"desc":"天真、天然，是这款蛋糕唯一的出发点",
+			"tae":"儿童，生日，人气",
+			"price":198
+		},
+		{
+			"src":"./images/middle12.jpg",
+			"title":"米道",
+			"desc":"天真、天然，是这款蛋糕唯一的出发点",
+			"tae":"儿童，生日，人气",
+			"price":298
+		},
+		{
+			"src":"./images/middle13.jpg",
+			"title":"米道",
+			"desc":"天真、天然，是这款蛋糕唯一的出发点",
+			"tae":"儿童，生日，人气",
+			"price":398
+		},
+		{
+			"src":"../images/middle14.jpg",
+			"title":"米道",
+			"desc":"天真、天然，是这款蛋糕唯一的出发点",
+			"tae":"儿童，生日，人气",
+			"price":498
+		}
+	]				
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    .box img{
+        display: block;
+        height: 100px;
+    }
+</style>
+<script>
+    $.ajax({
+        type: "get",
+        url: 'https://www.apiopen.top/satinApi?type=1&page=1',
+        async: true,
+        success: function (res) {
+            console.log(res.data);
+            setData(res.data);
+            // document.write(res);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    }).fail(function (err) {
+        console.log(err)
+    });
+    var setData = function (data) {
+        data.map(function (e) {
+            console.log(e);
+            $('.box ul ').append("<li>"
+                    +"名称"+e.name
+                    +"内容"+e.text
+                +"<img src='"+ e.profile_image+"' ></li>");
+            // $('.box  ul li img').attr("src",);
+        })
+    }
+</script>
+<body>
+<div class="box">
+    <ul>
+    </ul>
+</div>
+</body>
+
+</html>
